@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Job Application Tracker</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="navbar-container container">
+                <div class="logo">JobTracker</div>
+                <button class="mobile-menu-btn">☰</button>
+                <ul class="nav-links">
+                    <li><a href="#add-application">Add Application</a></li>
+                    <li><a href="#view-applications">View Applications</a></li>
+                    <li>
+                        <a href="#" id="import-export-btn">Import/Export</a>
+                    </li>
+                    <li>
+                        <label class="switch">
+                            <input type="checkbox" id="theme-toggle" />
+                            <span class="slider round"></span>
+                            <span class="theme-icon">🌙</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Add Application Section -->
+        <section id="add-application" class="section">
+            <div class="container">
+                <h2 class="section-title">Add New Job Application</h2>
+                <div class="form-container">
+                    <form id="application-form">
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="company">Company Name*</label>
+                                    <input
+                                        type="text"
+                                        id="company"
+                                        class="form-control"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="position">Position*</label>
+                                    <input
+                                        type="text"
+                                        id="position"
+                                        class="form-control"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="location">Location</label>
+                                    <input
+                                        type="text"
+                                        id="location"
+                                        class="form-control"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="job-type">Job Type</label>
+                                    <select id="job-type" class="form-control">
+                                        <option value="Full-time">
+                                            Full-time
+                                        </option>
+                                        <option value="Part-time">
+                                            Part-time
+                                        </option>
+                                        <option value="Contract">
+                                            Contract
+                                        </option>
+                                        <option value="Internship">
+                                            Internship
+                                        </option>
+                                        <option value="Remote">Remote</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="status"
+                                        >Application Status*</label
+                                    >
+                                    <select
+                                        id="status"
+                                        class="form-control"
+                                        required
+                                    >
+                                        <option value="Applied">Applied</option>
+                                        <option value="Interview">
+                                            Interview
+                                        </option>
+                                        <option value="Rejected">
+                                            Rejected
+                                        </option>
+                                        <option value="Offered">
+                                            Selected
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="salary"
+                                        >Salary (if known)</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="salary"
+                                        class="form-control"
+                                        placeholder="e.g. $80,000"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="date-applied"
+                                        >Date Applied*</label
+                                    >
+                                    <input
+                                        type="date"
+                                        id="date-applied"
+                                        class="form-control"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="deadline"
+                                        >Deadline/Follow-up Date</label
+                                    >
+                                    <input
+                                        type="date"
+                                        id="deadline"
+                                        class="form-control"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="job-url">Job Posting URL</label>
+                                    <input
+                                        type="url"
+                                        id="job-url"
+                                        class="form-control"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="reminder">Set Reminder</label>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="reminder" />
+                                        <label for="reminder"
+                                            >Send me a notification</label
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Notes</label>
+                            <textarea
+                                id="notes"
+                                class="form-control"
+                                rows="3"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn">
+                                Save Application
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- View Applications Section -->
+        <section id="view-applications" class="section">
+            <div class="container">
+                <h2 class="section-title">Your Job Applications</h2>
+
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-count">0</div>
+                        <div class="stat-label">Total Applications</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="active-count">0</div>
+                        <div class="stat-label">Active Applications</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="interview-count">0</div>
+                        <div class="stat-label">Scheduled Interviews</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="offers-count">0</div>
+                        <div class="stat-label">Selected Offers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="upcoming-count">0</div>
+                        <div class="stat-label">Upcoming Deadlines</div>
+                    </div>
+                </div>
+
+                <div class="applications-container">
+                    <div class="filter-container">
+                        <div class="search-container">
+                            <input
+                                type="text"
+                                id="search-applications"
+                                placeholder="Search applications..."
+                            />
+                        </div>
+                        <div class="filter-group">
+                            <select
+                                id="filter-status"
+                                class="form-control status-filter"
+                            >
+                                <option value="All">All Statuses</option>
+                                <option value="Applied">Applied</option>
+                                <option value="Interview">Interview</option>
+                                <option value="Rejected">Rejected</option>
+                                <option value="Offered">Offered</option>
+                            </select>
+                            <select
+                                id="filter-job-type"
+                                class="form-control job-type-filter"
+                            >
+                                <option value="All">All Job Types</option>
+                                <option value="Full-time">Full-time</option>
+                                <option value="Part-time">Part-time</option>
+                                <option value="Contract">Contract</option>
+                                <option value="Internship">Internship</option>
+                                <option value="Remote">Remote</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="sort-container">
+                        <label for="sort-by">Sort by:</label>
+                        <div class="sort-options">
+                            <select id="sort-by" class="form-control">
+                                <option value="dateApplied-desc">
+                                    Date Applied (Newest)
+                                </option>
+                                <option value="dateApplied-asc">
+                                    Date Applied (Oldest)
+                                </option>
+                                <option value="company-asc">
+                                    Company (A-Z)
+                                </option>
+                                <option value="company-desc">
+                                    Company (Z-A)
+                                </option>
+                                <option value="position-asc">
+                                    Position (A-Z)
+                                </option>
+                                <option value="position-desc">
+                                    Position (Z-A)
+                                </option>
+                            </select>
+                            <select id="sort-then-by" class="form-control">
+                                <option value="none">Then by...</option>
+                                <option value="status">Status</option>
+                                <option value="dateApplied">
+                                    Date Applied
+                                </option>
+                                <option value="company">Company</option>
+                                <option value="position">Position</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="applications-table">
+                            <thead>
+                                <tr>
+                                    <th data-sort="company">
+                                        Company <span class="sort-icon">⇅</span>
+                                    </th>
+                                    <th data-sort="position">
+                                        Position
+                                        <span class="sort-icon">⇅</span>
+                                    </th>
+                                    <th data-sort="dateApplied">
+                                        Date Applied
+                                        <span class="sort-icon">⇅</span>
+                                    </th>
+                                    <th data-sort="status">
+                                        Status <span class="sort-icon">⇅</span>
+                                    </th>
+                                    <th data-sort="jobType">Job Type</th>
+                                    <th data-sort="deadline">Deadline</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="applications-table-body">
+                                <!-- Table will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                        <div id="no-applications" class="no-applications">
+                            No job applications found. Add your first
+                            application above!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Edit Application Modal -->
+        <div id="edit-modal" class="modal">
+            <div class="modal-content">
+                <button class="close-modal">&times;</button>
+                <h3>Edit Application</h3>
+                <form id="edit-form">
+                    <input type="hidden" id="edit-id" />
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-company">Company Name*</label>
+                                <input
+                                    type="text"
+                                    id="edit-company"
+                                    class="form-control"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-position">Position*</label>
+                                <input
+                                    type="text"
+                                    id="edit-position"
+                                    class="form-control"
+                                    required
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-location">Location</label>
+                                <input
+                                    type="text"
+                                    id="edit-location"
+                                    class="form-control"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-job-type">Job Type</label>
+                                <select id="edit-job-type" class="form-control">
+                                    <option value="Full-time">Full-time</option>
+                                    <option value="Part-time">Part-time</option>
+                                    <option value="Contract">Contract</option>
+                                    <option value="Internship">
+                                        Internship
+                                    </option>
+                                    <option value="Remote">Remote</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-status"
+                                    >Application Status*</label
+                                >
+                                <select
+                                    id="edit-status"
+                                    class="form-control"
+                                    required
+                                >
+                                    <option value="Applied">Applied</option>
+                                    <option value="Interview">Interview</option>
+                                    <option value="Rejected">Rejected</option>
+                                    <option value="Offered">Offered</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-salary"
+                                    >Salary (if known)</label
+                                >
+                                <input
+                                    type="text"
+                                    id="edit-salary"
+                                    class="form-control"
+                                    placeholder="e.g. $80,000"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-date-applied"
+                                    >Date Applied*</label
+                                >
+                                <input
+                                    type="date"
+                                    id="edit-date-applied"
+                                    class="form-control"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-deadline"
+                                    >Deadline/Follow-up Date</label
+                                >
+                                <input
+                                    type="date"
+                                    id="edit-deadline"
+                                    class="form-control"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-job-url"
+                                    >Job Posting URL</label
+                                >
+                                <input
+                                    type="url"
+                                    id="edit-job-url"
+                                    class="form-control"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="edit-reminder">Set Reminder</label>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="edit-reminder" />
+                                    <label for="edit-reminder"
+                                        >Send me a notification</label
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-notes">Notes</label>
+                        <textarea
+                            id="edit-notes"
+                            class="form-control"
+                            rows="3"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn">
+                            Update Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Application Details Modal -->
+        <div id="details-modal" class="modal">
+            <div class="modal-content">
+                <button class="close-modal">&times;</button>
+                <h3>Application Details</h3>
+                <div id="application-details">
+                    <!-- Details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Import/Export Modal -->
+        <div id="import-export-modal" class="modal">
+            <div class="modal-content">
+                <button class="close-modal">&times;</button>
+                <h3>Import/Export Data</h3>
+                <div class="import-export-container">
+                    <div class="import-section">
+                        <h4>Import Data</h4>
+                        <p>
+                            Upload a CSV file with your job applications data.
+                        </p>
+                        <div class="file-input-container">
+                            <input type="file" id="import-file" accept=".csv" />
+                            <button id="import-btn" class="btn">
+                                Import Data
+                            </button>
+                        </div>
+                    </div>
+                    <div class="export-section">
+                        <h4>Export Data</h4>
+                        <p>Download your job applications data as a file.</p>
+                        <div class="export-buttons">
+                            <button id="export-csv-btn" class="btn">
+                                Export to CSV
+                            </button>
+                            <button id="export-pdf-btn" class="btn">
+                                Export to PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
